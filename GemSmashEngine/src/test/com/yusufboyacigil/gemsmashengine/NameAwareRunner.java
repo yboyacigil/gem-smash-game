@@ -16,4 +16,5 @@ public class NameAwareRunner extends BlockJUnit4ClassRunner {
         System.out.println("*** " + frameworkMethod.getMethod().getDeclaringClass().getName() + " " + frameworkMethod.getName());
         return super.methodBlock(frameworkMethod);
     }
+    
 }
