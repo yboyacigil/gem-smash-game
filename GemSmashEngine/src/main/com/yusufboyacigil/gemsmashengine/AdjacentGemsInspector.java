@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.yusufboyacigil.gemsmashengine.model.Board;
-import com.yusufboyacigil.gemsmashengine.model.Coord;
+import com.yusufboyacigil.gemsmashengine.model.Cell;
 
 /**
  *
@@ -26,8 +26,8 @@ public class AdjacentGemsInspector {
 		}
 	}
 	
-	public static Set<Coord> inspect(int gem, Coord start, Board board) {
-		Set<Coord> coordSet = new HashSet<Coord>();
+	public static Set<Cell> inspect(int gem, Cell start, Board board) {
+		Set<Cell> coordSet = new HashSet<Cell>();
 
 		int c = 1;
 		for(int k=1; k < 3; k++) {
@@ -44,23 +44,23 @@ public class AdjacentGemsInspector {
 		return coordSet;
 	}
 
-	private static void deepInspect(int gem, Coord start, Board board, Set<Coord> coordSet, EDir... directions) {
+	private static void deepInspect(int gem, Cell start, Board board, Set<Cell> cellSet, EDir... directions) {
 		for(EDir d: directions) {
-			Coord moved = move(start, d);
-			if (coordSet.contains(moved)) continue;
+			Cell moved = move(start, d);
+			if (cellSet.contains(moved)) continue;
 			if (board.cell(moved.x(), moved.y()) == gem) {
-				coordSet.add(moved);
-				deepInspect(gem, moved, board, coordSet, d.next());
+				cellSet.add(moved);
+				deepInspect(gem, moved, board, cellSet, d.next());
 			}
 		}
 	}
 
-	private static Coord move(Coord start, EDir d) {
+	private static Cell move(Cell start, EDir d) {
 		switch(d) {
-			case UP    : return new Coord(start.x() - 1, start.y());
-			case RIGHT : return new Coord(start.x(),     start.y() + 1);
-			case LEFT  : return new Coord(start.x(),     start.y() - 1);
-			case DOWN  : return new Coord(start.x() + 1, start.y());
+			case UP    : return new Cell(start.x() - 1, start.y());
+			case RIGHT : return new Cell(start.x(),     start.y() + 1);
+			case LEFT  : return new Cell(start.x(),     start.y() - 1);
+			case DOWN  : return new Cell(start.x() + 1, start.y());
 			default    :  throw new IllegalStateException("No such direction: " + d);
 		}
 	}

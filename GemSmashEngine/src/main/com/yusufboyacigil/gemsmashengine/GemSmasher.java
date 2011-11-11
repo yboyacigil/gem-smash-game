@@ -3,7 +3,7 @@ package com.yusufboyacigil.gemsmashengine;
 import java.util.Set;
 
 import com.yusufboyacigil.gemsmashengine.model.Board;
-import com.yusufboyacigil.gemsmashengine.model.Coord;
+import com.yusufboyacigil.gemsmashengine.model.Cell;
 
 /**
  *
@@ -11,8 +11,8 @@ import com.yusufboyacigil.gemsmashengine.model.Coord;
  */
 public class GemSmasher {
 	
-	public static void smash(int gem, Board board, Set<Coord> gemCoords) {
-		for(Coord c: gemCoords) {
+	public static void smash(int gem, Board board, Set<Cell> cellSet) {
+		for(Cell c: cellSet) {
 			if (board.cell(c.x(), c.y()) == gem) {
 				board.setCell(c.x(), c.y(), 0);
 			} else {

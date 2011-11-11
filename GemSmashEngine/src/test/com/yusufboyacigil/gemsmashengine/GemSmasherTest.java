@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.yusufboyacigil.gemsmashengine.model.Board;
-import com.yusufboyacigil.gemsmashengine.model.Coord;
+import com.yusufboyacigil.gemsmashengine.model.Cell;
 import com.yusufboyacigil.gemsmashengine.util.BoardPrinter;
 
 /**
@@ -33,11 +33,11 @@ public class GemSmasherTest {
 		});
 		BoardPrinter.print(board);
 		
-		Set<Coord> gemCoords = AdjacentGemsInspector.inspect(1, new Coord(2, 0), board);
-		assertEquals(8, gemCoords.size());
-		System.out.println("Adjacent gems: " + gemCoords);
+		Set<Cell> cellSet = AdjacentGemsInspector.inspect(1, new Cell(2, 0), board);
+		assertEquals(8, cellSet.size());
+		System.out.println("Adjacent gems: " + cellSet);
 		
-		GemSmasher.smash(1, board, gemCoords);
+		GemSmasher.smash(1, board, cellSet);
 		for(int i=0; i < board.height(); i++) {
 			for(int j=0; j < board.width(); j++) {
 				if (board.cell(i, j) == 1) fail("Smash failed at (" + i + ", " + j + ")");

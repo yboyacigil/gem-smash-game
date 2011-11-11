@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.yusufboyacigil.gemsmashengine.model.Board;
-import com.yusufboyacigil.gemsmashengine.model.Coord;
+import com.yusufboyacigil.gemsmashengine.model.Cell;
 import com.yusufboyacigil.gemsmashengine.util.BoardPrinter;
 
 /**
@@ -31,7 +31,7 @@ public class AdjacentGemsInspectorTest {
 		board.pushRow(new int[] {1, 2, 2, 4 ,5});
 		BoardPrinter.print(board);
 	
-		Set<Coord> result = AdjacentGemsInspector.inspect(1, new Coord(3, 0), board);
+		Set<Cell> result = AdjacentGemsInspector.inspect(1, new Cell(3, 0), board);
 		assertEquals(0, result.size());
 	}	
 		
@@ -45,14 +45,14 @@ public class AdjacentGemsInspectorTest {
 		board.pushRow(new int[] {2, 2, 2, 4 ,5});
 		BoardPrinter.print(board);
 	
-		Set<Coord> result = AdjacentGemsInspector.inspect(1, new Coord(3, 0), board);
+		Set<Cell> result = AdjacentGemsInspector.inspect(1, new Cell(3, 0), board);
 		System.out.println("Adjacent gems: " + result);
 		assertEquals(3, result.size());
 		
 		for(int i=0; i < board.height(); i++) {
 			for(int j = 0; j < board.width(); j++) {
 				if (board.cell(i, j) == 1) {
-					assertTrue(result.contains(new Coord(i,j)));
+					assertTrue(result.contains(new Cell(i,j)));
 				}
 			}
 		}
@@ -68,14 +68,14 @@ public class AdjacentGemsInspectorTest {
 		board.pushRow(new int[] {1, 2, 2, 4 ,5});
 		BoardPrinter.print(board);
 	
-		Set<Coord> result = AdjacentGemsInspector.inspect(1, new Coord(3, 0), board);
+		Set<Cell> result = AdjacentGemsInspector.inspect(1, new Cell(3, 0), board);
 		System.out.println("Adjacent gems: " + result);
 		assertEquals(7, result.size());
 		
 		for(int i=0; i < board.height(); i++) {
 			for(int j = 0; j < board.width(); j++) {
 				if (board.cell(i, j) == 1) {
-					assertTrue(result.contains(new Coord(i,j)));
+					assertTrue(result.contains(new Cell(i,j)));
 				}
 			}
 		}
@@ -91,14 +91,14 @@ public class AdjacentGemsInspectorTest {
 		board.pushRow(new int[] {1, 2, 2, 4 ,5});
 		BoardPrinter.print(board);
 	
-		Set<Coord> result = AdjacentGemsInspector.inspect(1, new Coord(3, 0), board);
+		Set<Cell> result = AdjacentGemsInspector.inspect(1, new Cell(3, 0), board);
 		System.out.println("Adjacent gems: " + result);
 		assertEquals(11, result.size());
 		
 		for(int i=0; i < board.height(); i++) {
 			for(int j = 0; j < board.width(); j++) {
 				if (board.cell(i, j) == 1) {
-					assertTrue(result.contains(new Coord(i,j)));
+					assertTrue(result.contains(new Cell(i,j)));
 				}
 			}
 		}

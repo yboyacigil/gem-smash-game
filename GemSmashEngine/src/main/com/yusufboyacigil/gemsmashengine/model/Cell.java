@@ -4,12 +4,12 @@ package com.yusufboyacigil.gemsmashengine.model;
  *
  * @author yboyacigil
  */
-public class Coord {
+public class Cell {
 
 	private int x;
 	private int y;
 	
-	public Coord(int x, int y) {
+	public Cell(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -44,7 +44,7 @@ public class Coord {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Coord other = (Coord) obj;
+		Cell other = (Cell) obj;
 		if (this.x != other.x)
 			return false;
 		if (this.y != other.y)
