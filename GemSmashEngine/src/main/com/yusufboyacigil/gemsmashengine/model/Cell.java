@@ -10,14 +10,14 @@ public class Cell {
 	private int col;
 	private int gem = -1;
 	
-	public Cell(int x, int y) {
-		this.row = x;
-		this.col = y;
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
 	}
 	
-	public Cell(int x, int y, int val) {
-		this(x, y);
-		this.gem = val;
+	public Cell(int row, int col, int gem) {
+		this(row, col);
+		this.gem = gem;
 	}
 	
 	public int row() {
