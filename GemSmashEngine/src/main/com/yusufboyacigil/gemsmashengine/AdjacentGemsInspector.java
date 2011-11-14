@@ -31,7 +31,7 @@ public class AdjacentGemsInspector {
 
 		int c = 1;
 		for(int k=1; k < 3; k++) {
-			if (board.cell(start.x() - k, start.y()) != gem) return coordSet;
+			if (board.cell(start.row() - k, start.col()) != gem) return coordSet;
 			c++;
 		}
 		if (c < 3) {
@@ -48,7 +48,7 @@ public class AdjacentGemsInspector {
 		for(EDir d: directions) {
 			Cell moved = move(start, d);
 			if (cellSet.contains(moved)) continue;
-			if (board.cell(moved.x(), moved.y()) == gem) {
+			if (board.cell(moved.row(), moved.col()) == gem) {
 				cellSet.add(moved);
 				deepInspect(gem, moved, board, cellSet, d.next());
 			}
@@ -57,10 +57,10 @@ public class AdjacentGemsInspector {
 
 	private static Cell move(Cell start, EDir d) {
 		switch(d) {
-			case UP    : return new Cell(start.x() - 1, start.y());
-			case RIGHT : return new Cell(start.x(),     start.y() + 1);
-			case LEFT  : return new Cell(start.x(),     start.y() - 1);
-			case DOWN  : return new Cell(start.x() + 1, start.y());
+			case UP    : return new Cell(start.row() - 1, start.col());
+			case RIGHT : return new Cell(start.row(),     start.col() + 1);
+			case LEFT  : return new Cell(start.row(),     start.col() - 1);
+			case DOWN  : return new Cell(start.row() + 1, start.col());
 			default    :  throw new IllegalStateException("No such direction: " + d);
 		}
 	}

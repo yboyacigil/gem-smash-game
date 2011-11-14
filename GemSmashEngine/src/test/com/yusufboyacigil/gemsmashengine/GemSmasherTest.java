@@ -60,9 +60,9 @@ public class GemSmasherTest {
 
 		assertEquals(3, potentialAdjacentsAfterSmash.size());
 		for(Cell c: potentialAdjacentsAfterSmash) {
-			if (c.x() == 2 && c.y() == 1) assertEquals(5, c.val());
-			if (c.x() == 1 && c.y() == 2) assertEquals(4, c.val());
-			if (c.x() == 1 && c.y() == 3) assertEquals(4, c.val());
+			if (c.row() == 2 && c.col() == 1) assertEquals(5, c.gem());
+			if (c.row() == 1 && c.col() == 2) assertEquals(4, c.gem());
+			if (c.row() == 1 && c.col() == 3) assertEquals(4, c.gem());
 		}
 		System.out.println("Potential adjacents cells after smash: " + potentialAdjacentsAfterSmash);
 
@@ -110,10 +110,10 @@ public class GemSmasherTest {
 
 		assertEquals(4, potentialAdjacentsAfterSmash.size());
 		for(Cell c: potentialAdjacentsAfterSmash) {
-			if (c.x() == 3 && c.y() == 1) assertEquals(5, c.val());
-			if (c.x() == 2 && c.y() == 2) assertEquals(4, c.val());
-			if (c.x() == 1 && c.y() == 2) assertEquals(5, c.val());
-			if (c.x() == 2 && c.y() == 3) assertEquals(3, c.val());
+			if (c.row() == 3 && c.col() == 1) assertEquals(5, c.gem());
+			if (c.row() == 2 && c.col() == 2) assertEquals(4, c.gem());
+			if (c.row() == 1 && c.col() == 2) assertEquals(5, c.gem());
+			if (c.row() == 2 && c.col() == 3) assertEquals(3, c.gem());
 		}
 		System.out.println("Potential adjacents cells after smash: " + potentialAdjacentsAfterSmash);
 		

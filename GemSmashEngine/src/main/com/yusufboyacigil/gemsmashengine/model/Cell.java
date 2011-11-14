@@ -6,45 +6,45 @@ package com.yusufboyacigil.gemsmashengine.model;
  */
 public class Cell {
 
-	private int x;
-	private int y;
-	private int val = -1;
+	private int row;
+	private int col;
+	private int gem = -1;
 	
 	public Cell(int x, int y) {
-		this.x = x;
-		this.y = y;
+		this.row = x;
+		this.col = y;
 	}
 	
 	public Cell(int x, int y, int val) {
 		this(x, y);
-		this.val = val;
+		this.gem = val;
 	}
 	
-	public int x() {
-		return x;
+	public int row() {
+		return row;
 	}
 	
-	public int y() {
-		return y;
+	public int col() {
+		return col;
 	}
 	
-	public int val() {
-		return val;
+	public int gem() {
+		return gem;
 	}
 	
 	@Override
 	public String toString() {
-		if (val == -1) return "(" + x + "," + y + ")";
-		else           return "(" + x + "," + y + "):" + val;
+		if (gem == -1) return "(" + row + "," + col + ")";
+		else           return "(" + row + "," + col + "):" + gem;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + val;
-		result = prime * result + x;
-		result = prime * result + y;
+		result = prime * result + gem;
+		result = prime * result + row;
+		result = prime * result + col;
 		return result;
 	}
 
@@ -57,11 +57,11 @@ public class Cell {
 		if (getClass() != obj.getClass())
 			return false;
 		Cell other = (Cell) obj;
-		if (val != other.val)
+		if (gem != other.gem)
 			return false;
-		if (x != other.x)
+		if (row != other.row)
 			return false;
-		if (y != other.y)
+		if (col != other.col)
 			return false;
 		return true;
 	}
