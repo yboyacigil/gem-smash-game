@@ -10,7 +10,7 @@ public class Basket {
 	private int numGems;
 	
 	public void setGem(int gem) {
-		if (this.gem != 0) {
+		if (this.gem != 0 && this.numGems > 0) {
 			throw new IllegalStateException("Gem already set for this basket (" + gem + ")");
 		}
 		this.gem = gem;
