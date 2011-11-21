@@ -8,35 +8,40 @@ import com.yusufboyacigil.gemsmashengine.model.Board;
  */
 public class BoardPrinter {
 
-	public static void print(Board board) {
-		System.out.print(" ");
+	public static String build(Board board) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" ");
 		for(int i=0; i < board.width(); i++) {
-			System.out.print("   " + i);
+			builder.append("   ").append(i);
 		}
-		System.out.println();
+		builder.append("\n");
 		
-		System.out.print("  ");
+		builder.append("  ");
 		for(int i=0; i < board.width(); i++) {
-			System.out.print(" ---");
+			builder.append(" ---");
 		}
-		System.out.println();
+		builder.append("\n");
 		
 		
 		for(int i=0; i < board.height(); i++) {
 			int[] row = board.row(i);
-			System.out.print(i + " ");
+			builder.append(i).append(" ");
 			for(int j = 0; j < row.length; j++) {
-				System.out.print("| " + row[j] + " ");
+				builder.append("| ").append(row[j]).append(" ");
 			}
-			System.out.println("|");
+			builder.append("|\n");
 
-			System.out.print("  ");
+			builder.append("  ");
 			for(int k=0; k < board.width(); k++) {
-				System.out.print(" ---");
+				builder.append(" ---");
 			}
-			System.out.println();
+			builder.append("\n");
 		}
-		
+		return builder.toString();
+	}
+	
+	public static void print(Board board) {
+		System.out.println(build(board));
 	}
 	
 }

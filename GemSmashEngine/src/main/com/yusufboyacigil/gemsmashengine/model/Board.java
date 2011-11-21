@@ -16,34 +16,34 @@ public class Board {
 	
 	public int height() { return data.length; }
 	
-	public int[] row(int rownum) { return data[rownum]; }
+	public int[] row(int row) { return data[row]; }
 	
-	public int cell(int i, int j) { 
-		if (i >= 0 && i < data.length && j >= 0 && j < data[0].length)
-			return data[i][j];
+	public int cell(int row, int col) { 
+		if (row >= 0 && row < data.length && col >= 0 && col < data[0].length)
+			return data[row][col];
 		return -1;
 	}
 
 	public void pushRow(int[] row) {
-		for(int i=data.length - 1; i > 0; i--) {
-			data[i] = data[i-1];
+		for(int r=data.length - 1; r > 0; r--) {
+			data[r] = data[r-1];
 		}
 		data[0] = row;
 	}
 	
 	public boolean isFilledUp() {
 		int[] lastRow = data[data.length - 1];
-		for(int i=0; i < lastRow.length; i++) {
-			if (lastRow[i] > 0) {
+		for(int row=0; row < lastRow.length; row++) {
+			if (lastRow[row] > 0) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public void setCell(int i, int j, int v) {
-		if (i >= 0 && i < data.length && j >= 0 && j < data[0].length) {
-			data[i][j] = v;
+	public void setCell(int row, int col, int gem) {
+		if (row >= 0 && row < data.length && col >= 0 && col < data[0].length) {
+			data[row][col] = gem;
 		}
 	}
 	
@@ -51,9 +51,10 @@ public class Board {
 		if (this.data[0].length != data[0].length) {
 			throw new IllegalArgumentException("Width mismatch! (" + this.data[0].length + "!=" + data[0].length);
 		}
-		for(int i=0; i < data.length; i++) {
-			if (i >= this.data.length) break;
-			this.data[i] = data[i];
+		for(int row=0; row < data.length; row++) {
+			if (row >= this.data.length) break;
+			this.data[row] = data[row];
 		}
 	}
+	
 }
