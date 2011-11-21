@@ -347,7 +347,7 @@ public class GameView extends View {
 	}
 	
 	private long fillPeriodMillis() {
-		return 1000;
+		return 10000;
 	}
 
 	class GemFillerThread extends Thread {
