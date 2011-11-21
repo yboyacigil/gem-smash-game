@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+	<com.yusufboyacigil.android.gemsmashapp.GameView
+	     android:id="@+id/game_view"
+	     android:layout_width="match_parent"
+	     android:layout_height="match_parent"
+	     gemSize="64"
+	     basketSize="64"/>
+    <RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+
+        <TextView
+         android:id="@+id/status_text"
+         android:text="@string/game_layout_status_text_text"
+         android:visibility="invisible"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:gravity="center_horizontal"
+         android:textColor="#ffffff"
+         android:textStyle="bold"
+         android:textSize="24sp"/>
+    </RelativeLayout>        
+</FrameLayout>
