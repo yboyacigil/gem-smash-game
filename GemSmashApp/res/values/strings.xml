@@ -3,5 +3,5 @@
     <string name="app_name">Gem Smash</string>
     <string name="game_layout_status_text_text"></string>
     <string name="mode_paused">PAUSED</string>
-    <string name="mode_lost">GAME OVER\nTap to start new game</string>
+    <string name="mode_lost">GAME OVER</string>
 </resources>
