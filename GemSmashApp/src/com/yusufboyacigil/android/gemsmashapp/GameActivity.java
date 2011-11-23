@@ -2,6 +2,7 @@ package com.yusufboyacigil.android.gemsmashapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -31,15 +32,17 @@ public class GameActivity extends Activity implements OnTouchListener {
 
         if (savedInstanceState == null) {
             // We were just launched -- set up a new game
+        	Log.d(TAG, "No saved instance");
             gameView.setMode(GameView.READY);
         } else {
-// 			  We are being restored
-//            Bundle map = savedInstanceState.getBundle(ICICLE_KEY);
-//            if (map != null) {
-//                gameView.restoreState(map);
-//            } else {
-//                gameView.setMode(GameView.PAUSE);
-//            }
+ 			// We are being restored
+        	Log.d(TAG, "Restoring game state");
+            Bundle map = savedInstanceState.getBundle(GAME_STATE_KEY);
+            if (map != null) {
+                gameView.restoreState(map);
+            } else {
+                gameView.setMode(GameView.PAUSED);
+            }
         }
 	}
 	
@@ -58,6 +61,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
+		Log.d(TAG, "Saving game state");
 		outState.putBundle(GAME_STATE_KEY, gameView.saveState());
 	}
 

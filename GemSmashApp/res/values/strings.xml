@@ -4,4 +4,8 @@
     <string name="game_layout_status_text_text"></string>
     <string name="mode_paused">PAUSED</string>
     <string name="mode_lost">GAME OVER</string>
+    <string name="intro_title">Gem Smash Game</string>
+    <string name="intro_new_game">New Game!</string>
+    <string name="intro_how_to_play">How to Play</string>
+    <string name="intro_about">GemSmash is an android replica of \"Gameboy Advance - SuperGemSmash Advance\" game.\nDeveloped by yboyacigil</string>
 </resources>

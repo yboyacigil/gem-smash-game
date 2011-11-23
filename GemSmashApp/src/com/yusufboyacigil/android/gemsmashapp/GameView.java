@@ -147,9 +147,9 @@ public class GameView extends View {
                 				xOffset + (col * gemSize), 
                 				yOffset + (row * gemSize), 
                 				paint);
-                		targetIndicatorMode = 1 - targetIndicatorMode;
                 	}
                 }
+        		targetIndicatorMode = 1 - targetIndicatorMode;
             }
         }
         
@@ -166,6 +166,8 @@ public class GameView extends View {
 		if (mode != RUNNING) return;
 		if ((basketPositionIndex + 1) < xGemCount) 
 			basketPositionIndex++;
+		else
+			basketPositionIndex = 0;
 		Log.d(TAG, "Move basket right (position index: " + basketPositionIndex + ")");
 	}
 	
@@ -173,6 +175,8 @@ public class GameView extends View {
 		if (mode != RUNNING) return;
 		if ((basketPositionIndex - 1) >= 0)
 			basketPositionIndex--;
+		else
+			basketPositionIndex = xGemCount - 1;
 		Log.d(TAG, "Move basket left (position index: " + basketPositionIndex + ")");
 	}
 	
@@ -239,7 +243,7 @@ public class GameView extends View {
 			if (statusText.getVisibility() == View.VISIBLE) {
 				statusText.setVisibility(View.INVISIBLE);
 			}
-            redrawHandler.sleep(100);			
+            redrawHandler.sleep(250);			
 		} else {
 			CharSequence str = "";
 			Resources res = getContext().getResources();
@@ -258,9 +262,21 @@ public class GameView extends View {
 	
 	public Bundle saveState() {
 		Bundle map = new Bundle();
+		
+		map.putInt("basketPositionIndex", basketPositionIndex);
+		map.putSerializable("board", board);
+		map.putSerializable("basket", basket);
 
         return map;
     }
+	
+	public void restoreState(Bundle map) {
+		setMode(PAUSED);
+		
+		basketPositionIndex = map.getInt("basketPositionIndex");
+		board = (Board) map.getSerializable("board");
+		basket = (Basket) map.getSerializable("basket");
+	}
 	
 	private void initGameView() {
 		setFocusable(true);
@@ -275,32 +291,32 @@ public class GameView extends View {
 		
 		basketBitmapArray = new Bitmap[6][4];
 		// empty basket
-		loadBasketBitmap(0, 0, r.getDrawable(R.drawable.basket));
+		loadBasketBitmap(0, 0, r.getDrawable(R.drawable.b));
 		
-		loadBasketBitmap(RED_GEM, 0, r.getDrawable(R.drawable.basket));
-		loadBasketBitmap(RED_GEM, 1, r.getDrawable(R.drawable.basket_r_1));
-		loadBasketBitmap(RED_GEM, 2, r.getDrawable(R.drawable.basket_r_2));
-		loadBasketBitmap(RED_GEM, 3, r.getDrawable(R.drawable.basket_r));
+		loadBasketBitmap(RED_GEM, 0, r.getDrawable(R.drawable.b));
+		loadBasketBitmap(RED_GEM, 1, r.getDrawable(R.drawable.b_r_1));
+		loadBasketBitmap(RED_GEM, 2, r.getDrawable(R.drawable.b_r_2));
+		loadBasketBitmap(RED_GEM, 3, r.getDrawable(R.drawable.b_r));
 		
-		loadBasketBitmap(GREEN_GEM, 0, r.getDrawable(R.drawable.basket));
-		loadBasketBitmap(GREEN_GEM, 1, r.getDrawable(R.drawable.basket_g_1));
-		loadBasketBitmap(GREEN_GEM, 2, r.getDrawable(R.drawable.basket_g_2));
-		loadBasketBitmap(GREEN_GEM, 3, r.getDrawable(R.drawable.basket_g));
+		loadBasketBitmap(GREEN_GEM, 0, r.getDrawable(R.drawable.b));
+		loadBasketBitmap(GREEN_GEM, 1, r.getDrawable(R.drawable.b_g_1));
+		loadBasketBitmap(GREEN_GEM, 2, r.getDrawable(R.drawable.b_g_2));
+		loadBasketBitmap(GREEN_GEM, 3, r.getDrawable(R.drawable.b_g));
 
-		loadBasketBitmap(BLUE_GEM, 0, r.getDrawable(R.drawable.basket));
-		loadBasketBitmap(BLUE_GEM, 1, r.getDrawable(R.drawable.basket_b_1));
-		loadBasketBitmap(BLUE_GEM, 2, r.getDrawable(R.drawable.basket_b_2));
-		loadBasketBitmap(BLUE_GEM, 3, r.getDrawable(R.drawable.basket_b));
+		loadBasketBitmap(BLUE_GEM, 0, r.getDrawable(R.drawable.b));
+		loadBasketBitmap(BLUE_GEM, 1, r.getDrawable(R.drawable.b_b_1));
+		loadBasketBitmap(BLUE_GEM, 2, r.getDrawable(R.drawable.b_b_2));
+		loadBasketBitmap(BLUE_GEM, 3, r.getDrawable(R.drawable.b_b));
 
-		loadBasketBitmap(YELLOW_GEM, 0, r.getDrawable(R.drawable.basket));
-		loadBasketBitmap(YELLOW_GEM, 1, r.getDrawable(R.drawable.basket_y_1));
-		loadBasketBitmap(YELLOW_GEM, 2, r.getDrawable(R.drawable.basket_y_2));
-		loadBasketBitmap(YELLOW_GEM, 3, r.getDrawable(R.drawable.basket_y));
+		loadBasketBitmap(YELLOW_GEM, 0, r.getDrawable(R.drawable.b));
+		loadBasketBitmap(YELLOW_GEM, 1, r.getDrawable(R.drawable.b_y_1));
+		loadBasketBitmap(YELLOW_GEM, 2, r.getDrawable(R.drawable.b_y_2));
+		loadBasketBitmap(YELLOW_GEM, 3, r.getDrawable(R.drawable.b_y));
 
-		loadBasketBitmap(GREY_GEM, 0, r.getDrawable(R.drawable.basket));
-		loadBasketBitmap(GREY_GEM, 1, r.getDrawable(R.drawable.basket_e_1));
-		loadBasketBitmap(GREY_GEM, 2, r.getDrawable(R.drawable.basket_e_2));
-		loadBasketBitmap(GREY_GEM, 3, r.getDrawable(R.drawable.basket_e));
+		loadBasketBitmap(GREY_GEM, 0, r.getDrawable(R.drawable.b));
+		loadBasketBitmap(GREY_GEM, 1, r.getDrawable(R.drawable.b_e_1));
+		loadBasketBitmap(GREY_GEM, 2, r.getDrawable(R.drawable.b_e_2));
+		loadBasketBitmap(GREY_GEM, 3, r.getDrawable(R.drawable.b_e));
 
 		loadTargetIndicatorBitmaps(r);
 	}
