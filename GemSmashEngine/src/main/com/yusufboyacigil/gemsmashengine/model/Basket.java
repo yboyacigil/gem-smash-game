@@ -1,11 +1,15 @@
 package com.yusufboyacigil.gemsmashengine.model;
 
+import java.io.Serializable;
+
 /**
  * Represents basket where gems collected in.
  * @author yboyacigil
  */
-public class Basket {
+public class Basket implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private int gem;
 	private int numGems;
 	
