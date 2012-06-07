@@ -20,4 +20,4 @@ The app is not complete but playable. Here are the improvements:
 - Scoring is not implemented.  
 - Game continues till you get bored up, levelling not supported.
 - Adding sound would be good!
-- Basket image needs to be better. (resoulution)
+- Basket image needs to be better. (resolution)
